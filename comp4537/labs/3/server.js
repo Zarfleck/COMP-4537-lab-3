@@ -10,7 +10,7 @@ const server = http.createServer((req, res) => {
     const pathname = parsedUrl.pathname;
     const query = parsedUrl.query;
 
-    if (pathname === '/writeFile/') {
+    if (pathname === '/COMP4537/labs/3/writeFile/') {
         const text = query.text;
         if (!text) {
             res.writeHead(400, { 'Content-Type': 'text/html' });
@@ -39,8 +39,8 @@ const server = http.createServer((req, res) => {
         return;
     }
 
-    if (pathname.startsWith('/readFile/')) {
-        const fileName = pathname.replace('/readFile/', '');
+    if (pathname.startsWith('/COMP4537/labs/3/readFile/')) {
+        const fileName = pathname.replace('/COMP4537/labs/3/readFile/', '');
         
         fs.readFile('../../../' + fileName, 'utf8', (err, data) => {
             if (err) {
