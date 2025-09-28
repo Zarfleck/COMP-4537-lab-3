@@ -2,8 +2,8 @@ const http = require('http');
 const url = require('url');
 const fs = require('fs');
 const path = require('path');
-const utils = require('../../../modules/utils.js');
-const lang = require('../../../lang/en/en.js');
+const utils = require('./comp4537/labs/3/modules/utils.js');
+const lang = require('./comp4537/labs/3/lang/en/en.js');
 
 const server = http.createServer((req, res) => {
     const parsedUrl = url.parse(req.url, true);
