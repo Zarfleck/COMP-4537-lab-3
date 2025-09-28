@@ -2,8 +2,8 @@ const http = require('http');
 const url = require('url');
 const fs = require('fs');
 const path = require('path');
-const utils = require('./modules/utils.js');
-const lang = require('./lang/en/en.js');
+const utils = require('../../../modules/utils.js');
+const lang = require('../../../lang/en/en.js');
 
 const server = http.createServer((req, res) => {
     const parsedUrl = url.parse(req.url, true);
@@ -18,7 +18,7 @@ const server = http.createServer((req, res) => {
             return;
         }
 
-        fs.appendFile('file.txt', text + '\n', (err) => {
+        fs.appendFile('../../../file.txt', text + '\n', (err) => {
             if (err) {
                 res.writeHead(500, { 'Content-Type': 'text/html' });
                 res.end('<h1>Error writing to file</h1>');
@@ -42,7 +42,7 @@ const server = http.createServer((req, res) => {
     if (pathname.startsWith('/readFile/')) {
         const fileName = pathname.replace('/readFile/', '');
         
-        fs.readFile(fileName, 'utf8', (err, data) => {
+        fs.readFile('../../../' + fileName, 'utf8', (err, data) => {
             if (err) {
                 res.writeHead(404, { 'Content-Type': 'text/html' });
                 res.end(`
