@@ -18,10 +18,11 @@ const server = http.createServer((req, res) => {
             return;
         }
 
-        fs.appendFile('../../../file.txt', text + '\n', (err) => {
+        fs.appendFile('comp4537/labs/3/file.txt', text + '\n', (err) => {
             if (err) {
+                console.log('Error writing to file:', err);
                 res.writeHead(500, { 'Content-Type': 'text/html' });
-                res.end('<h1>Error writing to file</h1>');
+                res.end('<h1>Error writing to file: ' + err.message + '</h1>');
                 return;
             }
             res.writeHead(200, { 'Content-Type': 'text/html' });
@@ -42,7 +43,7 @@ const server = http.createServer((req, res) => {
     if (pathname.startsWith('/COMP4537/labs/3/readFile/')) {
         const fileName = pathname.replace('/COMP4537/labs/3/readFile/', '');
         
-        fs.readFile('../../../' + fileName, 'utf8', (err, data) => {
+        fs.readFile('comp4537/labs/3/' + fileName, 'utf8', (err, data) => {
             if (err) {
                 res.writeHead(404, { 'Content-Type': 'text/html' });
                 res.end(`
