@@ -10,7 +10,6 @@ const server = http.createServer((req, res) => {
     const pathname = parsedUrl.pathname;
     const query = parsedUrl.query;
 
-    // Handle /writeFile/ endpoint
     if (pathname === '/writeFile/') {
         const text = query.text;
         if (!text) {
@@ -19,7 +18,6 @@ const server = http.createServer((req, res) => {
             return;
         }
 
-        // Append text to file.txt
         fs.appendFile('file.txt', text + '\n', (err) => {
             if (err) {
                 res.writeHead(500, { 'Content-Type': 'text/html' });
@@ -41,7 +39,6 @@ const server = http.createServer((req, res) => {
         return;
     }
 
-    // Handle /readFile/ endpoint
     if (pathname.startsWith('/readFile/')) {
         const fileName = pathname.replace('/readFile/', '');
         
@@ -82,7 +79,6 @@ const server = http.createServer((req, res) => {
         return;
     }
 
-    // Handle greeting endpoint
     const name = query.name;
     const currentTime = utils.getDate();
     
